@@ -1,70 +1,250 @@
-# Getting Started with Create React App
+# Chatbot Flow Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based visual flow builder for creating chatbot conversations using drag-and-drop interface.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+[View Live Demo](https://chatbot-flow-builder-ektaurane669-4138-ekta-uranes-projects.vercel.app/)
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Visual Flow Builder**: Drag and drop interface for creating chatbot flows
+- **Text Nodes**: Send message nodes with customizable text content
+- **Connection System**: Connect nodes with validated edge connections
+- **Smart Validation**: Prevents invalid connections and validates flow structure
+- **Settings Panel**: Edit node properties with an intuitive interface
+- **Extensible Design**: Easy to add new node types in the future
+- **Responsive Design**: Works on desktop and mobile devices
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technologies Used
 
-### `npm test`
+- **React 18** - Frontend framework
+- **React Flow** - Flow diagram library
+- **UUID** - Unique ID generation
+- **CSS3** - Styling and animations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📋 Requirements Met
 
-### `npm run build`
+### Core Features
+- ✅ Text Node implementation
+- ✅ Drag and drop from Nodes Panel
+- ✅ Edge connections between nodes
+- ✅ Source handle (one outgoing edge only)
+- ✅ Target handle (multiple incoming edges)
+- ✅ Settings panel for editing nodes
+- ✅ Save functionality with validation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Business Rules
+- ✅ Only one edge from source handle
+- ✅ Multiple edges to target handle allowed
+- ✅ Error shown when: More than one node AND more than one node has empty target handles
+- ✅ Settings panel replaces nodes panel when node selected
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Technical Requirements
+- ✅ Built with React and React Flow
+- ✅ Extensible architecture for new node types
+- ✅ Clean, commented code
+- ✅ Responsive design
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Quick Start
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd chatbot-flow-builder
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Start the development server:
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+### Building for Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Project Structure
 
-### Code Splitting
+```
+src/
+├── components/
+│   └── FlowBuilder/
+│       ├── FlowBuilder.jsx          # Main flow builder component
+│       ├── FlowBuilder.css          # Styles for flow builder
+│       ├── CustomNodes/
+│       │   └── TextNode.jsx         # Custom text node component
+│       └── Panels/
+│           ├── NodesPanel.jsx       # Draggable nodes panel
+│           └── SettingsPanel.jsx    # Node settings panel
+├── hooks/
+│   └── useFlowValidation.js         # Flow validation logic
+├── utils/
+│   └── flowHelpers.js               # Utility functions
+├── App.js                           # Main app component
+├── App.css                          # Global styles
+└── index.js                         # Entry point
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎯 How to Use
 
-### Analyzing the Bundle Size
+### Creating Nodes
+1. Drag the "Message" node from the **Nodes Panel** on the right
+2. Drop it anywhere on the canvas to create a new text node
+3. Click on a node to select and edit it
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Editing Nodes
+1. Click on any node to select it
+2. The **Settings Panel** will appear on the right
+3. Edit the message text in the text area
+4. Use the back arrow to return to the nodes panel
 
-### Making a Progressive Web App
+### Connecting Nodes
+1. Drag from the **source handle** (right side of node) to the **target handle** (left side of another node)
+2. Each source handle can only have **one outgoing connection**
+3. Target handles can have **multiple incoming connections**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Saving Flow
+1. Click the **"Save Changes"** button in the top-right corner
+2. The save will only work if the flow is valid
+3. **Error condition**: More than one node exists AND more than one node has empty target handles
 
-### Advanced Configuration
+## 🔧 Architecture & Extensibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Adding New Node Types
 
-### Deployment
+The architecture is designed to be extensible. To add a new node type:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. **Create the node component** in `CustomNodes/`:
+```jsx
+// CustomNodes/NewNodeType.jsx
+import React from 'react';
+import { Handle, Position } from 'reactflow';
 
-### `npm run build` fails to minify
+const NewNodeType = ({ data, selected }) => {
+  return (
+    <div className={`new-node ${selected ? 'selected' : ''}`}>
+      <Handle type="target" position={Position.Left} />
+      {/* Your node content */}
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default NewNodeType;
+```
+
+2. **Register the node type** in `FlowBuilder.jsx`:
+```jsx
+import NewNodeType from './CustomNodes/NewNodeType';
+
+const nodeTypes = {
+  textNode: TextNode,
+  newNodeType: NewNodeType,  // Add your new node type
+};
+```
+
+3. **Add to nodes panel** in `NodesPanel.jsx`:
+```jsx
+<div
+  className="node-item"
+  onDragStart={(event) => onDragStart(event, 'newNodeType')}
+  draggable
+>
+  <div className="node-preview">
+    <div className="node-icon">🆕</div>
+    <span>New Node</span>
+  </div>
+</div>
+```
+
+4. **Update helper functions** in `flowHelpers.js` if needed.
+
+### Key Design Patterns
+
+- **Component Composition**: Each panel and node is a separate component
+- **Custom Hooks**: Flow validation logic is extracted into a reusable hook
+- **Utility Functions**: Common operations are centralized in helper functions
+- **State Management**: Uses React Flow's built-in state management with custom extensions
+
+## 🧪 Validation Rules
+
+The flow builder implements specific validation rules:
+
+### Connection Rules
+- **Source handles**: Can only have ONE outgoing edge
+- **Target handles**: Can have MULTIPLE incoming edges
+- **Self-connection**: Not allowed
+- **Duplicate connections**: Not allowed
+
+### Save Validation
+The save operation will show an error if:
+- There are **more than one nodes** in the flow, AND
+- **More than one node** has **empty target handles** (no incoming connections)
+
+### Valid Flow Examples
+✅ Single node (always valid)
+✅ Multiple nodes where only one has empty target handle
+✅ All nodes connected in a sequence
+
+
+## 🎨 Styling & Theme
+
+The application uses a clean, modern design with:
+- **Primary Color**: Blue (#1976d2)
+- **Success Color**: Green gradient for message nodes
+- **Background**: Light gray (#f5f5f5)
+- **Cards**: White with subtle shadows
+- **Interactive Elements**: Smooth hover and focus states
+
+## 🚀 Deployment
+
+### Vercel Deployment
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel`
+3. Follow the prompts to deploy
+
+### Netlify Deployment
+1. Build the project: `npm run build`
+2. Drag and drop the `build` folder to Netlify
+3. Or connect your GitHub repo for automatic deployments
+
+### Other Platforms
+The built static files can be deployed to any static hosting service like:
+- GitHub Pages
+- Firebase Hosting
+- AWS S3
+- Heroku
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Open a pull request
+
+## 🔍 Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## 📞 Support
+
+If you have any questions or issues, please open an issue on GitHub.
+
+---
+
+Built with ❤️ using React and React Flow
